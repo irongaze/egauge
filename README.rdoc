@@ -2,6 +2,8 @@
 
 Written by Rob Morris @ Irongaze Consulting LLC (http://irongaze.com)
 
+Funding for development provided by Sustainable Industrial Solutions LLC (http://sustainableis.com)
+
 == DESCRIPTION
 
 A set of classes to enable parsing and using data from eGauge meters as native Ruby objects.
@@ -50,9 +52,9 @@ To use:
     
 == REQUIREMENTS
 
-Ruby 1.9
-Nokogiri for XML parsing
-Rspec to build and test the gem
+- Ruby 1.9
+- Nokogiri for XML parsing
+- Rspec to build and test the gem
 
 == INSTALL
 
