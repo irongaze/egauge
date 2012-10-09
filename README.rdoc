@@ -12,7 +12,7 @@ A set of classes to enable parsing and using data from eGauge meters as native R
 
 This gem facilitates interpreting incoming monitoring data and converting it into Ruby objects for easier
 manipulation.  It handles parsing the xml data posted by eGauge devices, converting them into Ruby objects
-that can be manipulated with ease!
+that can be manipulated more easily.
 
 To use:
 
@@ -23,7 +23,7 @@ To use:
     # the data posted to your server from the eGauge device
     >> data = EGauge::Data.parse(request.body.read)
 
-    # Which device sent this data?
+    # What's the configuration serial number?
     >> data.serial
     => '0x37cdd096'
     
@@ -35,15 +35,15 @@ To use:
     >> data.row_count
     => 3
 
-    # Check out a register
+    # Inspect one of the registers
     >> reg = data.registers.first
     >> reg.label
     => 'Solar'
     >> reg.type_code
     => 'P'
     
-    # Get the data points from a given register, with timestamps
-    >> reg.each_with_timestamp do |val, ts|
+    # Get the data points from a given register, with timestamps and seconds the value represents
+    >> reg.each_row do |ts, val, seconds|
     >>   puts "#{ts}: #{val}"
     >> end
     2012-10-09 13:50:00 -0400: 51140761685

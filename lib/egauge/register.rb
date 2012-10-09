@@ -14,7 +14,7 @@ module EGauge
     end
     
     # Run each value in this register, yielding |timestamp, value| for each
-    def each_with_timestamp
+    def each_row
       @data.xml.group.elements.each do |chunk|
         # Set up for running this data chunk - prep timestamp and increment step from source xml
         ts = EGauge::parse_time(chunk['time_stamp'])
@@ -23,17 +23,17 @@ module EGauge
         # Run each row in the chunk, and yield our results
         (chunk / './r').each do |row|
           val = (row / './c')[@index].text.to_i
-          yield ts, val
+          yield ts, val, step
           ts += step
         end
       end
     end
     
-    # Return results as a 2D array, like so: [ [timestamp1, val1], [timestamp2, val2], ... ]
+    # Return results as a 2D array, like so: [ [timestamp1, val1, seconds1], [timestamp2, val2, seconds2], ... ]
     def to_a
       res = []
-      each_with_timestamp do |ts, val|
-        res << [ts, val]
+      each_row do |ts, val, step|
+        res << [ts, val, step]
       end
       res
     end

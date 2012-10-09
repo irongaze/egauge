@@ -3,7 +3,7 @@ require 'nokogiri'
 module EGauge
   class Data
     # Attributes
-    attr_reader :serial, :registers, :timestamp
+    attr_reader :config_serial, :registers, :timestamp
     
     # Parse XML and return an EGauge::Data object containing the data.
     # This will be the primary entry point for most uses of this gem.
@@ -18,7 +18,7 @@ module EGauge
     def initialize(xml)
       # Store off Nokogiri xml tree
       @xml = xml
-      @serial = @xml.group['serial']
+      @config_serial = @xml.group['serial']
       
       # Get first data segment, which sets the register info for all data segments
       data = @xml.group.data
@@ -51,7 +51,7 @@ module EGauge
     end
     
     # Run each value in this register
-    def each_with_timestamp
+    def each_row
       @xml.group.elements.each do |chunk|
         # Set up for running this data chunk - prep timestamp and increment step from source xml
         ts = EGauge::parse_time(chunk['time_stamp'])
@@ -60,17 +60,17 @@ module EGauge
         # Run each row in the chunk, and yield our results
         (chunk / './r').each do |row|
           vals = (row / './c').collect {|c| c.text.to_i}
-          yield ts, vals
+          yield ts, vals, step
           ts += step
         end
       end
     end
     
-    # Return results as a 2D array, like so: [ [timestamp1, [val1, val2...]], [timestamp2, [val1, val2,...], ... ]
+    # Return results as a 2D array, like so: [ [timestamp1, [val1, val2...], seconds1], [timestamp2, [val1, val2,...], seconds2], ... ]
     def to_a
       res = []
-      each_with_timestamp do |ts, vals|
-        res << [ts, vals]
+      each_row do |ts, vals, step|
+        res << [ts, vals, step]
       end
       res
     end

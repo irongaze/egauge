@@ -24,9 +24,10 @@ describe EGauge::Register do
   
   it 'should allow iterating over values with timestamps' do
     counter = 0
-    @reg.each_with_timestamp do |ts, val|
+    @reg.each_row do |ts, val, step|
       val.should be_a(Integer)
       ts.should be_a(Time)
+      step.should == 60
       counter += 1
     end
     counter.should == 3

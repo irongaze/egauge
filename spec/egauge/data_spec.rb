@@ -12,8 +12,8 @@ describe EGauge::Data do
     group.should_not be_nil
   end
   
-  it 'should provide the serial number' do
-    @data1.serial.should == '0x37cdd096'
+  it 'should provide the configuration serial number' do
+    @data1.config_serial.should == '0x37cdd096'
   end
   
   it 'should provide the timestamp' do
@@ -35,10 +35,11 @@ describe EGauge::Data do
   end
   
   it 'should allow access to full row data' do
-    @data1.each_with_timestamp do |ts, values|
+    @data1.each_row do |ts, values, step|
       ts.should be_a(Time)
       values.should be_a(Array)
       values.count.should == 3
+      step.should == 60
     end
   end
 
