@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<group serial="0x37cdd096">
+  <data columns="1" time_stamp="0x4c9197e4" time_delta="60" epoch="0x47395980">
+    <cname t="P">Grid</cname>
+    <r><c>123</c></r>
+    <r><c>456</c></r>
+  </data>
+  <data columns="1" time_stamp="0x4c9197e4" time_delta="300" epoch="0x47395980">
+    <cname t="P">Grid</cname>
+    <r><c>789</c></r>
+    <r><c>101112</c></r>
+  </data>
+</group>

@@ -1,0 +1,65 @@
+= GEM: egauge
+
+Written by Rob Morris @ Irongaze Consulting LLC (http://irongaze.com)
+
+== DESCRIPTION
+
+A set of classes to enable parsing and using data from eGauge meters as native Ruby objects.
+
+== SYNOPSIS
+
+This gem facilitates interpreting incoming monitoring data and converting it into Ruby objects for easier
+manipulation.  It handles parsing the xml data posted by eGauge devices, converting them into Ruby objects
+that can be manipulated with ease!
+
+To use:
+
+    # Require the library (not needed if using Rails/bundler)
+    >> require 'egauge'
+    
+    # Parse a posted xml chunk to extract the contained data, passing in
+    # the data posted to your server from the eGauge device
+    >> data = EGauge::Data.parse(request.body.read)
+
+    # Which device sent this data?
+    >> data.serial
+    => '0x37cdd096'
+    
+    # How many registers do we have data coming in from?
+    >> data.register_count
+    => 2
+
+    # How many rows of data?
+    >> data.row_count
+    => 3
+
+    # Check out a register
+    >> reg = data.registers.first
+    >> reg.label
+    => 'Solar'
+    >> reg.type_code
+    => 'P'
+    
+    # Get the data points from a given register, with timestamps
+    >> reg.each_with_timestamp do |val, ts|
+    >>   puts "#{ts}: #{val}"
+    >> end
+    2012-10-09 13:50:00 -0400: 51140761685
+    2012-10-09 13:51:00 -0400: 51140761792
+    2012-10-09 13:52:00 -0400: 51140761880
+    
+== REQUIREMENTS
+
+Ruby 1.9
+Nokogiri for XML parsing
+Rspec to build and test the gem
+
+== INSTALL
+
+To install, simply run:
+
+    sudo gem install egauge
+    
+RVM users can skip the sudo:
+  
+    gem install egauge

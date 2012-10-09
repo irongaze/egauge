@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<group serial="0x37cdd096">
+  <data columns="3" time_stamp="0x4c9197e4" time_delta="60" epoch="0x47395980">
+    <cname t="P">Grid</cname>
+    <cname t="P">Solar</cname>
+    <cname t="P">Grg&amp;Bth (PHEV)</cname>
+    <r><c>5203642184</c><c>21308125431</c><c>17598056700</c></r>
+    <r><c>5203503484</c><c>21308125526</c><c>17598116405</c></r>
+    <r><c>5203368999</c><c>21308125626</c><c>17598176060</c></r>
+  </data>
+</group>

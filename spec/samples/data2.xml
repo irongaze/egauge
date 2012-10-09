@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE group PUBLIC "-//ESL/DTD eGauge 1.0//EN" "http://www.egauge.net/DTD/egauge-hist.dtd">
+<group serial="0x64bf2a22">
+<data columns="17" time_stamp="0x505b93c0" time_delta="60" epoch="0x50573af0">
+ <cname t="P">use</cname>
+ <cname t="P">gen</cname>
+ <cname t="P">Gen Virt</cname>
+ <cname t="#">aaron.testv1</cname>
+ <cname t="P">aaron.vtest2</cname>
+ <cname t="#">reac</cname>
+ <cname t="P">Mayo</cname>
+ <cname t="P">Mayo+</cname>
+ <cname t="S">Mayo*</cname>
+ <cname t="#">catchup ¥</cname>
+ <cname t="P">Register 1-</cname>
+ <cname t="P">Panel HP</cname>
+ <cname t="P">Panel PA</cname>
+ <cname t="P">Panel PB</cname>
+ <cname t="P">Panel LP</cname>
+ <cname t="P">solar2</cname>
+ <cname t="P">solar1</cname>
+ <r><c>745905872565</c><c>0</c><c>51140761685</c><c>1702828296559</c><c>-11291842883</c><c>193</c><c>-11309952897</c><c>-11291842883</c><c>1041</c><c>1702828296559</c><c>0</c><c>-50610360087</c><c>-486918628116</c><c>-533588476436</c><c>-695295512478</c><c>25077777223</c><c>26062984462</c></r>
+</data>
+</group>
