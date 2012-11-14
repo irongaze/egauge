@@ -22,6 +22,7 @@ module EGauge
       
       # Get first data segment, which sets the register info for all data segments
       data = @xml.group.data
+      data = data.first if data.is_a?(Nokogiri::XML::NodeSet)
       
       # Save off our starting timestamp for this whole group
       @timestamp = EGauge::parse_time(data['time_stamp'])

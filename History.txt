@@ -1,3 +1,7 @@
+== 1.0.2 / 2012-11/14
+
+* Fix case where we have multiple data nodes in an XML dump due to a change in timing intervals - Scott Klein
+
 == 1.0.1 / 2012-10-09
 
 * Update each_with_timestamp to more useful each_row that includes step size the row represents in seconds
