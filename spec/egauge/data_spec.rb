@@ -35,11 +35,10 @@ describe EGauge::Data do
   end
   
   it 'should allow access to full row data' do
-    @data1.each_row do |ts, values, step|
+    @data1.each_row do |ts, values|
       ts.should be_a(Time)
       values.should be_a(Array)
       values.count.should == 3
-      step.should == 60
     end
   end
 

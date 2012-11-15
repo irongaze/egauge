@@ -51,7 +51,7 @@ module EGauge
       end.inject(&:+)
     end
     
-    # Run each value in this register
+    # Run each row in the dataset, yielding |timestamp, [register vals...]|
     def each_row
       @xml.group.elements.each do |chunk|
         # Set up for running this data chunk - prep timestamp and increment step from source xml
@@ -61,17 +61,17 @@ module EGauge
         # Run each row in the chunk, and yield our results
         (chunk / './r').each do |row|
           vals = (row / './c').collect {|c| c.text.to_i}
-          yield ts, vals, step
+          yield ts, vals
           ts += step
         end
       end
     end
     
-    # Return results as a 2D array, like so: [ [timestamp1, [val1, val2...], seconds1], [timestamp2, [val1, val2,...], seconds2], ... ]
+    # Return results as a 2D array, like so: [ [timestamp1, [val1, val2...]], [timestamp2, [val1, val2,...]], ... ]
     def to_a
       res = []
-      each_row do |ts, vals, step|
-        res << [ts, vals, step]
+      each_row do |ts, vals|
+        res << [ts, vals]
       end
       res
     end

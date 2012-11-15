@@ -23,17 +23,17 @@ module EGauge
         # Run each row in the chunk, and yield our results
         (chunk / './r').each do |row|
           val = (row / './c')[@index].text.to_i
-          yield ts, val, step
+          yield ts, val
           ts += step
         end
       end
     end
     
-    # Return results as a 2D array, like so: [ [timestamp1, val1, seconds1], [timestamp2, val2, seconds2], ... ]
+    # Return results as a 2D array, like so: [ [timestamp1, val1], [timestamp2, val2], ... ]
     def to_a
       res = []
-      each_row do |ts, val, step|
-        res << [ts, val, step]
+      each_row do |ts, val|
+        res << [ts, val]
       end
       res
     end
