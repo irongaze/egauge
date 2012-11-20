@@ -15,7 +15,7 @@ module EGauge
     # Do ruby stuff to convert to 4 byte unsigned int
     as_int = str.hex
     # And return as a time...
-    Time.at(as_int)
+    Time.at(as_int).utc
   end
   
 end

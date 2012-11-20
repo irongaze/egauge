@@ -1,3 +1,7 @@
+== 1.0.4 / 2012-11-20
+
+* EGauge#parse_time should return timestamps in UTC
+
 == 1.0.3 / 2012-11-15
 
 * Remove step from #each_row's yielded params in Data and Register

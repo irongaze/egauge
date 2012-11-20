@@ -42,8 +42,8 @@ To use:
     >> reg.type_code
     => 'P'
     
-    # Get the data points from a given register, with timestamps and seconds the value represents
-    >> reg.each_row do |ts, val, seconds|
+    # Get the data points from a given register, with timestamps
+    >> reg.each_row do |ts, val|
     >>   puts "#{ts}: #{val}"
     >> end
     2012-10-09 13:50:00 -0400: 51140761685
